@@ -25,9 +25,9 @@ If the "No" option is chosen, the original button replaces the prompt. If "Yes" 
 ## Options
 
 - **event** - The event to intercept with confirmation. This is `click` by default.
-- **promptText** - The prompt given to the user. *Are you sure?* is not a great prompt to give a user. A better prompt would tell the user exactly what happens on confirmation. *Are you sure you want to delete your account? Your data will not be recoverable after you delete it.*.
+- **promptText** - The prompt given to the user. *Are you sure?* is not a great prompt to give a user. A better prompt would tell the user exactly what happens on confirmation. *Are you sure you want to delete your account? Your data will not be recoverable after you delete it.*
 - **yesText** - The text for the confirm (Yes) action. *Yes* may be too generic. It's better to say exactly what the button does. *Yes, Delete Account*.
-- **noText** - The text for the cancel (No) action. **No** may be too generic. It's better to say exactly what the button does. *No, Leave my Account Alone*.
+- **noText** - The text for the cancel (No) action. *No* may be too generic. It's better to say exactly what the button does. *No, Leave my Account Alone*.
 - **onYes** - A callback function executed when the user chooses the confirm (Yes) action. Overriding this will prevent Confirms from triggering the native event that was interrupted, and leave it to you, the programmer, to do anything useful.
 - **onNo** - A callback function executed when the user chooses the cancel (No) action. The prompt will be hidden and the original button restored even if this option is overridden.
 - **confirmsTemplate** - The HTML string used as a template for creating prompts. If you don't like the snippet shown above, you can change it along with the selector options below to customize the HTML structure.
