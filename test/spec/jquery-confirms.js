@@ -34,6 +34,14 @@ describe('jQuery Confirms', function() {
         it('triggers click on original element (follow link)', function() {
           expect(window.location.hash).toMatch(/test/);
         });
+
+        it('restores the original target element', function() {
+          expect($('.target')).toExist();
+        });
+
+        it('removes the confirm prompt', function() {
+          expect($('.confirms')).not.toExist();
+        });
       });
 
       describe('when confirmation no selected', function() {
@@ -97,6 +105,11 @@ describe('jQuery Confirms', function() {
 
       it('runs custom callback', function() {
         expect(yesSpy).toHaveBeenCalled();
+      });
+
+      it('still restores original button', function() {
+        expect($('.custom-confirm')).not.toExist();
+        expect($('.target')).toExist();
       });
     });
 
