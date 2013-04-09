@@ -1,3 +1,9 @@
+/*!
+  jQuery Confirms
+  © 2013 - Caleb Troughton
+  MIT Licensed: http://opensource.org/licenses/MIT
+  For more information, visit https://github.com/imakewebthings/jquery-confirms
+*/
 (function(undefined) {
   (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
