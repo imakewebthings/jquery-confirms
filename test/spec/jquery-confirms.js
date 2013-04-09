@@ -3,7 +3,7 @@ describe('jQuery Confirms', function() {
   var $prompt;
 
   beforeEach(function() {
-    setFixtures('<a class="target" href="#">Test</a>');
+    setFixtures('<a class="target" href="#test">Test</a>');
     $target = $('.target');
   });
 
@@ -27,16 +27,12 @@ describe('jQuery Confirms', function() {
       });
 
       describe('when confirmation yes selected', function() {
-        var originalClickSpy;
-
         beforeEach(function() {
-          originalClickSpy = jasmine.createSpy('on original click');
-          $target.on('click', originalClickSpy);
           $prompt.find('.confirms-yes').click();
         });
 
-        it('triggers click on original element', function() {
-          expect(originalClickSpy).toHaveBeenCalled();
+        it('triggers click on original element (follow link)', function() {
+          expect(window.location.hash).toMatch(/test/);
         });
       });
 

@@ -88,7 +88,15 @@
       noText: 'No',
       onYes: function(event) {
         var $this = $(this);
-        $this.unbind('.confirms').trigger($this.data('confirms-event'));
+        var originalEvent = $this.data('confirms-event');
+
+        $this.unbind('.confirms');
+        if ($this.is('a') && originalEvent === 'click') {
+          window.location.href = this.href;
+        }
+        else {
+          $this.trigger(originalEvent);
+        }
         event.preventDefault();
       },
       onNo: false,
