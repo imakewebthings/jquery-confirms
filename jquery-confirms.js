@@ -21,8 +21,9 @@
     var bindSubjectEvents = function($element, $confirmation, options) {
       var eventName = options.event + '.confirms';
 
-      $element.on(eventName, function() {
+      $element.on(eventName, function(event) {
         $element.after($confirmation).detach();
+        event.preventDefault();
       });
     };
 
@@ -33,17 +34,16 @@
       var eventName = 'click.confirms';
 
       $yes.on(eventName, $.proxy(options.onYes, element));
-      $no.on(eventName, function() {
+      $no.on(eventName, function(event) {
         $confirmation.after($element).detach();
-        options.onNo.call(element);
-      });
+      }).on(eventName, options.onNo);
     };
 
     var methods = {
-      init: function(options) {
+      init: function(userOptions) {
         this.each(function() {
           var $element = $(this);
-          var options = $.extend({}, $.fn.confirms.defaults, options);
+          var options = $.extend({}, $.fn.confirms.defaults, userOptions);
           var $confirmation = $(options.confirmsTemplate);
 
           fillTemplateText($confirmation, options);
@@ -61,7 +61,7 @@
       if (methods[method]) {
         return methods[method].apply(this, args);
       }
-      return methods.init.apply(this, method);
+      return methods.init.call(this, method);
     };
 
     $.fn.confirms.defaults = {
@@ -69,11 +69,12 @@
       promptText: 'Are you sure?',
       yesText: 'Yes',
       noText: 'No',
-      onYes: function() {
+      onYes: function(event) {
         var $this = $(this);
         $this.unbind('.confirms').trigger($this.data('confirms-event'));
+        event.preventDefault();
       },
-      onNo: $.noop,
+      onNo: false,
       confirmsTemplate: '<div class="confirms"><p class="confirms-prompt"></p><a class="confirms-yes" href="#"></a><a class="confirms-no" href="#"></a></div>',
       promptSelector: '.confirms-prompt',
       yesSelector: '.confirms-yes',

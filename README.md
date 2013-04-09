@@ -22,7 +22,7 @@ This will use all of the default options of Confirms, replacing `.some-button` w
 </div>
 ```
 
-If the "No" option is chosen, the original button replaces the prompt. If "Yes" is chosen, the confirmation handler is unbound from the button and a click is triggered on the button. The prompt and its behavior can be customized with the following options...
+If the "No" option is chosen, the original button replaces the prompt. If "Yes" is chosen, the confirmation handler is unbound from the button and a click is triggered on the button. The prompt and its behavior can be customized with by passing an options object to the `confirms` call.
 
 ## Options
 
@@ -45,11 +45,12 @@ If the "No" option is chosen, the original button replaces the prompt. If "Yes" 
   promptText: 'Are you sure?',
   yesText: 'Yes',
   noText: 'No',
-  onYes: function() {
+  onYes: function(event) {
     var $this = $(this);
     $this.unbind('.confirms').trigger($this.data('confirms-event'));
+    event.preventDefault();
   },
-  onNo: $.noop,
+  onNo: false,
   confirmsTemplate: '<div class="confirms"><p class="confirms-prompt"></p><a class="confirms-yes" href="#"></a><a class="confirms-no" href="#"></a></div>',
   promptSelector: '.confirms-prompt',
   yesSelector: '.confirms-yes',
@@ -69,12 +70,6 @@ data-confirms-no-text: noText
 ```
 
 All other options, such as the `onYes` and `onNo` callbacks, must be defined in script if they are to be used.
-
-## Methods
-
-- **confirms([options])** - Initializes the confirm plugin for the target elements, passing an options object if defaults need to be overridden.
-- **confirms('yes')** - Forces a trigger of the confirm (Yes) action, as if the user chose it. This can be called on either the original action element of the confirmation prompt.
-- **confirms('no')** - Forces a trigger of the cancel (No) action, as if the user chose it. This can be called on either the original action element of the confirmation prompt.
 
 ## License
 
