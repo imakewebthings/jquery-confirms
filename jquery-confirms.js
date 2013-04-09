@@ -38,11 +38,14 @@
       var $no = $confirmation.find(options.noSelector);
       var element = $element[0];
       var eventName = 'click.confirms';
-
-      $yes.on(eventName, $.proxy(options.onYes, element));
-      $no.on(eventName, function(event) {
+      var restoreOriginal = function() {
         $confirmation.after($element).detach();
-      }).on(eventName, options.onNo);
+      };
+
+      $yes.on(eventName, restoreOriginal)
+          .on(eventName, $.proxy(options.onYes, element));
+      $no.on(eventName, restoreOriginal)
+         .on(eventName, $.proxy(options.onNo, element));
     };
 
     var methods = {
