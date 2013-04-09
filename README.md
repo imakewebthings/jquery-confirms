@@ -1,8 +1,8 @@
 # jQuery Confirms
 
-Master: [![Master Build Status](https://travis-ci.org/imakewebthings/jquery-confirms.png?branch=master)](https://travis-ci.org/imakewebthings/jquery-confirms)
-
 A jQuery plugin for confirming a user action. The confirmation prompt is presented inline as a replacement to the original action.
+
+- Master: [![Master Build Status](https://travis-ci.org/imakewebthings/jquery-confirms.png?branch=master)](https://travis-ci.org/imakewebthings/jquery-confirms)
 
 ## Basic Usage
 
