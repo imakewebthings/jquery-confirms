@@ -119,4 +119,29 @@ describe('jQuery Confirms', function() {
       });
     });
   });
+
+  describe('declarative options', function() {
+    beforeEach(function() {
+      setFixtures('<a class="target" data-confirms-event="decevent" data-confirms-prompt-text="Confirm declarative?" data-confirms-yes-text="Sure" data-confirms-no-text="Nope" href="#">Test</a>');
+      $target = $('.target');
+      $target.confirms();
+      $target.trigger('decevent');
+    });
+
+    it('uses declared event', function() {
+      expect($('.confirms')).toExist();
+    });
+
+    it('uses declared prompt text', function() {
+      expect($('.confirms-prompt')).toHaveText('Confirm declarative?');
+    });
+
+    it('uses declared yes text', function() {
+      expect($('.confirms-yes')).toHaveText('Sure');
+    });
+
+    it('uses declared no text', function() {
+      expect($('.confirms-no')).toHaveText('Nope');
+    });
+  });
 });

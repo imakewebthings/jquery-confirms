@@ -43,7 +43,18 @@
       init: function(userOptions) {
         this.each(function() {
           var $element = $(this);
-          var options = $.extend({}, $.fn.confirms.defaults, userOptions);
+          var dataOptions = {
+            event: $element.data('confirms-event'),
+            promptText: $element.data('confirms-prompt-text'),
+            yesText: $element.data('confirms-yes-text'),
+            noText: $element.data('confirms-no-text')
+          };
+          var options = $.extend(
+            {},
+            $.fn.confirms.defaults,
+            dataOptions,
+            userOptions
+          );
           var $confirmation = $(options.confirmsTemplate);
 
           fillTemplateText($confirmation, options);
