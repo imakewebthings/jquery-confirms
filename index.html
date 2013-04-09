@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery Confirms</title>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>jQuery Confirms</h1>
+    <p>Inline confirmation of user actions.</p>
+    <ul>
+      <li><a href="https://github.com/imakewebthings/jquery-confirms/zipball/master" data-confirms-prompt-text="Are you sure you want to download a ZIP of this plugin?" data-confirms-yes-text="Yes, Download It" data-confirms-no-text="Never Mind" class="download">Download</a></li>
+      <li><a href="./test/" class="tests">Tests</a></li>
+      <li><a href="https://github.com/imakewebthings/jquery-confirms/blob/master/README.md" class="docs">Read Docs</a></li>
+      <li><a href="https://github.com/imakewebthings/jquery-confirms">GitHub</a></li>
+    </ul>
+  </div>
+
+  <script src="./test/lib/jquery/jquery.js"></script>
+  <script src="jquery-confirms.js"></script>
+  <script>
+    $(function() {
+      $('.download').confirms(); // Use declarative options
+    });
+  </script>
+</body>
+</html>

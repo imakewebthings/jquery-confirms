@@ -1,1 +1,0 @@
-script: phantomjs test/run-jasmine.js test/index.html
