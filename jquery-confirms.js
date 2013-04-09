@@ -38,8 +38,9 @@
       var $no = $confirmation.find(options.noSelector);
       var element = $element[0];
       var eventName = 'click.confirms';
-      var restoreOriginal = function() {
+      var restoreOriginal = function(event) {
         $confirmation.after($element).detach();
+        event.preventDefault();
       };
 
       $yes.on(eventName, restoreOriginal)
@@ -100,9 +101,8 @@
         else {
           $this.trigger(originalEvent);
         }
-        event.preventDefault();
       },
-      onNo: false,
+      onNo: $.noop,
       confirmsTemplate: '<div class="confirms"><p class="confirms-prompt"></p><a class="confirms-yes" href="#"></a><a class="confirms-no" href="#"></a></div>',
       promptSelector: '.confirms-prompt',
       yesSelector: '.confirms-yes',
