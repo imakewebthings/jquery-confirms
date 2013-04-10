@@ -1,5 +1,5 @@
 /*!
-  jQuery Confirms
+  jQuery Confirms - v0.0.1
   © 2013 - Caleb Troughton
   MIT Licensed: http://opensource.org/licenses/MIT
   For more information, visit https://github.com/imakewebthings/jquery-confirms
