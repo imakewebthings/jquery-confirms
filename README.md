@@ -81,6 +81,10 @@ All other options, such as the `onYes` and `onNo` callbacks, must be defined in 
 
 This repository includes no CSS. It is up to you to style the confirmations to fit your needs.
 
+## Changelog
+
+- 0.0.1: Initial release.
+
 ## License
 
 © 2013 - Caleb Troughton. Licensed under the [MIT license](http://opensource.org/licenses/MIT).
