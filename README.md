@@ -47,10 +47,16 @@ If the "No" option is chosen, the original button replaces the prompt. If "Yes" 
   noText: 'No',
   onYes: function(event) {
     var $this = $(this);
-    $this.unbind('.confirms').trigger($this.data('confirms-event'));
-    event.preventDefault();
+    var originalEvent = $this.data('confirms-event');
+    $this.unbind('.confirms');
+    if ($this.is('a') && originalEvent === 'click') {
+      window.location.href = this.href;
+    }
+    else {
+      $this.trigger(originalEvent);
+    }
   },
-  onNo: false,
+  onNo: $.noop,
   confirmsTemplate: '<div class="confirms"><p class="confirms-prompt"></p><a class="confirms-yes" href="#"></a><a class="confirms-no" href="#"></a></div>',
   promptSelector: '.confirms-prompt',
   yesSelector: '.confirms-yes',
@@ -70,6 +76,10 @@ data-confirms-no-text: noText
 ```
 
 All other options, such as the `onYes` and `onNo` callbacks, must be defined in script if they are to be used.
+
+## What About Styling?
+
+This repository includes no CSS. It is up to you to style the confirmations to fit your needs.
 
 ## License
 
